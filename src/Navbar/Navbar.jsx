@@ -12,21 +12,21 @@ const Navbar = () => {
       </div>
       <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
       <ul className="menu menu-horizontal gap-4 px-1 text-[#757575] font-[400]">
-      <NavLink to="/">Home</NavLink>
-      <NavLink to="/statistics">Statistics</NavLink>
-      <NavLink to="/applied">Applied Jobs</NavLink>
-      <NavLink to="blog">Blog</NavLink>
+      <NavLink className={({isActive}) => isActive && "text-[steelblue]"} to="/">Home</NavLink>
+      <NavLink className={({isActive}) => isActive && "text-[steelblue]"} to="/statistics">Statistics</NavLink>
+      <NavLink className={({isActive}) => isActive && "text-[steelblue]"} to="/applied">Applied Jobs</NavLink>
+      <NavLink className={({isActive}) => isActive && "text-[steelblue]"} to="blog">Blog</NavLink>
     </ul>  
       </ul>
     </div>
     <a className="btn btn-ghost font-bold text-xl md:text-2xl">CareerHub</a>
   </div>
   <div className="navbar-center hidden lg:flex">
-    <ul className="menu menu-horizontal px-1 md:flex gap-9 text-[#757575] font-[400]">
-      <NavLink to="/">Home</NavLink>
-      <NavLink to="/statistics">Statistics</NavLink>
-      <NavLink to="/applied">Applied Jobs</NavLink>
-      <NavLink to="blog">Blog</NavLink>
+    <ul className="menu menu-horizontal px-1 md:flex gap-9 text-[#757575] font-[500]">
+      <NavLink className={({isActive}) => isActive && "text-[steelblue]"} to="/">Home</NavLink>
+      <NavLink className={({isActive}) => isActive && "text-[steelblue]"} to="/statistics">Statistics</NavLink>
+      <NavLink className={({isActive}) => isActive && "text-[steelblue]"} to="/applied">Applied Jobs</NavLink>
+      <NavLink className={({isActive}) => isActive && "text-[steelblue]"} to="blog">Blog</NavLink>
     </ul>
   </div>
   <div className="navbar-end">

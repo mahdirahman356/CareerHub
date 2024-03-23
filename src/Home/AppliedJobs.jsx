@@ -11,6 +11,7 @@ const AppliedJobs = () => {
 
     let [appliad,setAppliad] = useState([])
     let [display,setDisplay] = useState([])
+
     let jobs = useLoaderData()
     let job = getAppliedJobId()
     useEffect(()=>{
@@ -19,10 +20,26 @@ const AppliedJobs = () => {
         let getId = jobs.find(job => job.id === id)
         jobApplied.push(getId)
         setAppliad(jobApplied)
-        setDisplay(appliad)
+        setDisplay(jobApplied)
 
     }
-    },[job,jobs,appliad])
+    },[])
+
+    let handleFilter = (filter) => {
+        if(filter === 'all'){
+            setDisplay(appliad)
+        }
+        else if(filter === 'remete'){
+            let remeteData = appliad.filter(job => job.remote_or_onsite === 'Remote')
+            setDisplay(remeteData)
+        }
+        else if(filter === 'onsite') {
+            let fullTimeData = appliad.filter(job => job.remote_or_onsite === 'Onsite')
+            setDisplay(fullTimeData)
+        }
+    }
+
+    
       return(
         <div>
             <div className="flex flex-col md:flex-row items-center justify-between mt-6">
@@ -35,9 +52,9 @@ const AppliedJobs = () => {
            <div className="dropdown dropdown-end ">
             <div tabIndex={0} role="button" className="btn rounded-md m-1 flex gap-1">Filter <RiArrowDropDownLine className="text-[27px]"/></div>
             <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-              <li><a>all</a></li>
-              <li><a>remete</a></li>
-              <li><a>fill time</a></li>
+              <li><a onClick={()=> handleFilter('all')}>All</a></li>
+              <li><a onClick={()=> handleFilter('remete')}>Remete</a></li>
+              <li><a onClick={()=> handleFilter('onsite')}>Onside</a></li>
             </ul>
           </div>   
            </div>
