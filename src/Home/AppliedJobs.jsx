@@ -5,6 +5,7 @@ import img from '../JobDetails/images/bg1.png'
 import img2 from '../JobDetails/images/bg2.png';
 import AppliedContent from "./AppliedContent";
 import { RiArrowDropDownLine } from "react-icons/ri";
+import { Helmet } from "react-helmet-async";
 
 
 const AppliedJobs = () => {
@@ -23,7 +24,7 @@ const AppliedJobs = () => {
         setDisplay(jobApplied)
 
     }
-    },[])
+    },[job,jobs])
 
     let handleFilter = (filter) => {
         if(filter === 'all'){
@@ -42,6 +43,9 @@ const AppliedJobs = () => {
     
       return(
         <div>
+            <Helmet>
+                <title>Applied Jobs</title>
+            </Helmet>
             <div className="flex flex-col md:flex-row items-center justify-between mt-6">
                 <img src={img} alt="" />
                 <p className="text-2xl font-bold mt-4">Applied Jobs</p>

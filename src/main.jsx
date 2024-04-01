@@ -11,6 +11,10 @@ import Home from './Home/Home';
 import ErrorPage from './Navbar/ErrorPage';
 import JobDetails from './JobDetails/JobDetails';
 import AppliedJobs from './Home/AppliedJobs';
+import { HelmetProvider } from 'react-helmet-async';
+import SingUp from './Froms/SingUp';
+import Context from './Context/Context';
+import SingIn from './Froms/SingIn';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -23,21 +27,35 @@ const router = createBrowserRouter([
       },
       {
         path: "/job/:id",
-        loader :()=> fetch('./jobs.json'),
+        loader :()=> fetch('/jobs.json'),
         element : <JobDetails></JobDetails>
       },
       {
         path: "/applied",
-        loader: () => fetch('jobs.json'),
+        loader: () => fetch('/jobs.json'),
         element:<AppliedJobs></AppliedJobs>
+      }, 
+      {
+        path: "/singUp",
+        element: <SingUp></SingUp>
+      },
+      {
+        path : "/singIn",
+        element: <SingIn></SingIn>
       }
+      
     ]
   },
+  
 ]);
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Context>
+    <HelmetProvider>
+      <RouterProvider router={router} />
+    </HelmetProvider>
+    </Context>
   </React.StrictMode>,
 )

@@ -2,8 +2,9 @@
 import PropTypes from 'prop-types'; 
 import { CiLocationOn } from "react-icons/ci";
 import { CiDollar } from "react-icons/ci";
+import { Link } from 'react-router-dom';
 const AppliedContent = ({appliad}) => {
-    let {logo,job_title,company_name,location,salary,remote_or_onsite,job_type} = appliad
+    let {id,logo,job_title,company_name,location,salary,remote_or_onsite,job_type} = appliad
 
     return (
         <div className='mb-24'>
@@ -24,7 +25,10 @@ const AppliedContent = ({appliad}) => {
           </div>
          
           </div>
-          <button className="btn mt-4 bg-[#7E90FE] text-white">View Details</button>
+          <Link to={`/job/${id}`}>
+              <button className="btn btn-primary text-white bg-[#7E90FE] border-none">View Details</button>
+              </Link>
+          {/* <button className="btn mt-4 bg-[#7E90FE] text-white">View Details</button> */}
         </div>
         </div>
     );

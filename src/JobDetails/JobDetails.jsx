@@ -9,6 +9,7 @@ import img2 from './images/bg2.png'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { saveAppliedJobId } from "../Storege/Storege";
+import { Helmet } from "react-helmet-async";
 const JobDetails = () => {
     let jobs = useLoaderData()
     let {id} = useParams()
@@ -22,6 +23,9 @@ const JobDetails = () => {
       }
         return (
         <div>
+            <Helmet>
+            <title>Fetured job</title>
+           </Helmet>
             <div className="flex flex-col md:flex-row justify-between mt-6">
                 <img src={img} alt="" />
                 <img className="hidden md:grid" src={img2} alt="" />
