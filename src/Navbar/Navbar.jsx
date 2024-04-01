@@ -4,7 +4,18 @@ import { AuthContext } from "../Context/Context";
 
 const Navbar = () => {
 
-   let {user} = useContext(AuthContext)
+   let {user,setSingOut} = useContext(AuthContext)
+
+   let  handleSingOut = () => {
+       setSingOut()
+       .then(()=> {
+        console.log("Sign-out successful.")
+       })
+       .catch((error) => {
+        const errorMessage = error.message;
+        console.log(errorMessage)
+      });
+   }
 
     return (
         <div>
@@ -35,10 +46,18 @@ const Navbar = () => {
   </div>
   <div className="navbar-end">
     {
-      user && <p className="hidden md:flex xl font-bold mx-3">{user.displayName}</p>
+      !user ?<>
+      <Link to="/singUp"><button className="btn mr-2 bg-[#7E90FE] text-white">SingUp</button></Link>
+      <Link to="/singIn"><button className="btn bg-[#7E90FE] text-white ">SingIn</button></Link>
+       </> 
+
+       :<> 
+        <p className="hidden md:flex xl font-bold mx-3">{user.displayName}</p>
+        <button onClick={handleSingOut} className="btn bg-[#7E90FE] text-white">SingOut</button>
+       </>
+
+
     }
-    <Link to="/singUp"><button className="btn mr-2 bg-[#7E90FE] text-white">SingUp</button></Link>
-    <Link to="/singIn"><button className="btn bg-[#7E90FE] text-white ">SingIn</button></Link>
 
   </div>
 </div> 
