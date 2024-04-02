@@ -44,10 +44,11 @@ const Navbar = () => {
   <div className="drawer-side">
     <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
     <ul className="menu p-4 w-50 min-h-full bg-base-200 text-base-content space-y-4">
-    <NavLink className={({isActive}) => isActive && "text-[steelblue]"} to="/"><span className="font-semibold">Home</span></NavLink>
-      <NavLink className={({isActive}) => isActive && "text-[steelblue]"} to="/statistics"><span className="font-semibold">Statistics</span></NavLink>
-      <NavLink className={({isActive}) => isActive && "text-[steelblue]"} to="/applied"><span className="font-semibold">Applied Jobs</span></NavLink>
-      <NavLink className={({isActive}) => isActive && "text-[steelblue]"} to="blog"><span className="font-semibold">Blog</span></NavLink>
+      <NavLink className={({isActive}) => isActive && "text-[steelblue]"} to="/">Home</NavLink>
+      <NavLink className={({isActive}) => isActive && "text-[steelblue]"} to="/singIn">SingIn</NavLink>
+      <NavLink className={({isActive}) => isActive && "text-[steelblue]"} to="/singUp">SingUp</NavLink>
+      <NavLink className={({isActive}) => isActive && "text-[steelblue]"} to="/applied">Applied Jobs</NavLink>
+      <NavLink className={({isActive}) => isActive && "text-[steelblue]"} to="blog">Blog</NavLink>
     </ul>
   </div>
 </div>

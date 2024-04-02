@@ -1,10 +1,11 @@
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import { AuthContext } from "../Context/Context";
 import { useNavigate } from "react-router-dom";
 
 const SingIn = () => {
     let navigate = useNavigate()
-    let {singIn} = useContext(AuthContext)
+    let getEmail = useRef()
+    let {singIn,resetPassward} = useContext(AuthContext)
     let handleSingIN = (e) => {
         e.preventDefault();
         let email = e.target.email.value
@@ -21,6 +22,18 @@ const SingIn = () => {
             console.log(errorMessage)
           });
     }
+    let handleForgrtPass = () => {
+        let email = getEmail.current.value
+        resetPassward(email)
+        .then(()=> {
+            console.log("passward reset email send")
+        }) 
+        .catch((error) => {
+          const errorMessage = error.message;
+          console.log(errorMessage)
+        });
+     }
+
     return (
         <div>
             <div className="min-h-[90vh]">
@@ -33,6 +46,7 @@ const SingIn = () => {
                         <span>Email</span>
                         <input type="email"
                          name="email" 
+                         ref={getEmail}
                          placeholder="email" 
                          className="input input-bordered" 
                          required />
@@ -43,6 +57,8 @@ const SingIn = () => {
                         placeholder="password" 
                         className="input input-bordered" 
                         required />
+
+                        <p onClick={handleForgrtPass} className="text-blue-700 underline">forget password</p>
 
                         <input className="btn btn-primary w-full mt-7" type="submit" value="submit" />
                     </form>
