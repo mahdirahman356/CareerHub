@@ -15,6 +15,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import SingUp from './Froms/SingUp';
 import Context from './Context/Context';
 import SingIn from './Froms/SingIn';
+import CreatePrivetRouter from './CreatePrivetRouter/CreatePrivetRouter';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -33,7 +34,9 @@ const router = createBrowserRouter([
       {
         path: "/applied",
         loader: () => fetch('/jobs.json'),
-        element:<AppliedJobs></AppliedJobs>
+        element:<CreatePrivetRouter>
+                <AppliedJobs></AppliedJobs>
+                </CreatePrivetRouter>
       }, 
       {
         path: "/singUp",

@@ -28,7 +28,6 @@ const FeaturedContent = ({featured}) => {
           </div>
         </div>
             </div>
-            <p className='text-xl'>mahdi rahaman</p>
         </div>
     );
 };
