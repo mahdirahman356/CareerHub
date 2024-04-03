@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../Context/Context";
-import {  useNavigate } from "react-router-dom";
+import {  Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import auth from "../firebase/firebase";
@@ -39,24 +39,27 @@ const SingUp = () => {
         .then(result => {
             let theUser = result.user
             console.log(theUser)
-            setSuccess(theUser)
-            setName(theUser, {
-                displayName : name
-            })
+            setSuccess("User created successfully!")
+
+            setName(theUser, {displayName : name})
+            navigate("/")
             .then(() => {
                 console.log("")
 
             })
             e.target.reset()
-            navigate("/")
 
         })
+
         .catch((error) => {
             const errorMessage = error.message;
             setError(errorMessage)
             console.log(errorMessage)
             return
           });
+
+
+        
 
 
          
@@ -119,13 +122,15 @@ const SingUp = () => {
                         required />
 
                         {Error && <p className="text-red-600">{Error}</p>}
-                        {success && <p className="text-green-600">User Created Successfully</p>}
+                        {success && <p className="text-green-600">{success}</p>}
 
-                        <input className="btn btn-primary w-full mt-7" type="submit" value="submit" />
+                        <input className="btn    w-full mt-7 rounded-3xl  bg-[#7E90FE] text-white " type="submit" value="submit" />
 
                         <button onClick={handleGoogleLogin} className="btn flex"><FcGoogle className="text-[20px]" /> Sing Up with Google</button>
                         <button onClick={handleGithubLogIn} className="btn"><AiFillGithub className="text-[20px]"/>Sing Up with Github</button>
+                        <Link className="w-full" to="/singIn"><button className="btn rounded-3xl mt-4 bg-[#7E90FE] text-white w-full">Log In Your Account</button></Link>
                     </form>
+
                     <div className="form-control mt-6">
                     </div>
                 </div>
@@ -135,3 +140,6 @@ const SingUp = () => {
 };
 
 export default SingUp;
+
+
+

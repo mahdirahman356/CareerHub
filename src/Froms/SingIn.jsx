@@ -1,6 +1,6 @@
 import { useContext, useRef } from "react";
 import { AuthContext } from "../Context/Context";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const SingIn = () => {
     let navigate = useNavigate()
@@ -58,9 +58,11 @@ const SingIn = () => {
                         className="input input-bordered" 
                         required />
 
-                        <p onClick={handleForgrtPass} className="text-blue-700 underline">forget password</p>
+                        <p onClick={handleForgrtPass} className="text-blue-700 underline text-[12px]">forget password</p>
 
-                        <input className="btn btn-primary w-full mt-7" type="submit" value="submit" />
+                        <input className="btn  w-full mt-7 rounded-3xl bg-[#7E90FE] text-white" type="submit" value="submit" />
+                        <Link className="w-full" to="/singUp"><button className="btn rounded-3xl mt-3 bg-[#7E90FE] text-white w-full">Create Account</button></Link>
+
                     </form>
                     <div className="form-control mt-6">
                     </div>
