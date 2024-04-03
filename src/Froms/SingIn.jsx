@@ -26,7 +26,7 @@ const SingIn = () => {
         let email = getEmail.current.value
         resetPassward(email)
         .then(()=> {
-            console.log("passward reset email send")
+            alert("please check your email and reset your password")
         }) 
         .catch((error) => {
           const errorMessage = error.message;
